@@ -10,18 +10,19 @@ function App() {
 
   async function testConnection() {
     try {
+      // Test simple : essayer de récupérer les données (même si table vide)
       const { data, error } = await supabase
         .from('people')
-        .select('count(*)')
-        .single()
+        .select('id')
+        .limit(1)
       
-      if (error && error.code !== 'PGRST116') {
+      if (error) {
         setConnectionStatus(`❌ Erreur: ${error.message}`)
       } else {
         setConnectionStatus('✅ Supabase connecté! MVP prêt à décoller!')
       }
     } catch (err) {
-      setConnectionStatus(`❌ Erreur: ${err.message}`)
+      setConnectionStatus(`❌ Erreur connexion: ${err.message}`)
     }
   }
 
@@ -55,6 +56,15 @@ function App() {
             <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
             <span>Interface moderne mobile-first</span>
           </div>
+        </div>
+
+        <div className="mt-8">
+          <button 
+            onClick={() => window.open('https://geneanet.org', '_blank')}
+            className="text-xs text-gray-400 hover:text-gray-600 underline"
+          >
+            🔗 Comparer avec Geneanet (ancien)
+          </button>
         </div>
 
         <div className="mt-6 text-xs text-gray-500">
