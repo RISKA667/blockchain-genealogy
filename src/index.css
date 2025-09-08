@@ -1,27 +1,140 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  
+  ::selection {
+    @apply bg-blockchain-600/20 text-blockchain-900;
   }
 }
 
 @layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
   .btn-primary {
-    @apply bg-blockchain-600 hover:bg-blockchain-700 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+    @apply btn bg-blockchain-600 hover:bg-blockchain-700 active:bg-blockchain-800 text-white py-2 px-4 focus:ring-blockchain-500;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors;
+    @apply btn bg-gray-200 hover:bg-gray-300 active:bg-gray-400 text-gray-800 py-2 px-4 focus:ring-gray-500;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-gray-100 active:bg-gray-200 text-gray-700 py-2 px-4 focus:ring-gray-500;
+  }
+  
+  .btn-sm {
+    @apply py-1.5 px-3 text-sm;
+  }
+  
+  .btn-lg {
+    @apply py-3 px-6 text-lg;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+    @apply bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-200 bg-gray-50;
   }
   
   .input-field {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blockchain-500;
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blockchain-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .input-error {
+    @apply border-red-300 focus:ring-red-500;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply badge bg-blockchain-100 text-blockchain-800;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-error {
+    @apply badge bg-red-100 text-red-800;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full border-4 border-gray-200 border-t-blockchain-600;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-blockchain-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .glass {
+    @apply bg-white/95 backdrop-blur-sm;
+  }
+  
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 mb-6;
+  }
+  
+  .text-muted {
+    @apply text-gray-600;
+  }
+  
+  .divider {
+    @apply border-t border-gray-200 my-6;
+  }
+  
+  .avatar {
+    @apply rounded-full bg-gray-200 flex items-center justify-center text-gray-600;
+  }
+  
+  .tooltip {
+    @apply absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 rounded shadow-lg opacity-0 invisible transition-all duration-200;
+  }
+  
+  .fade-in {
+    @apply transition-opacity duration-300 ease-in-out;
+  }
+  
+  .slide-up {
+    @apply transform transition-all duration-300 ease-out translate-y-2 opacity-0;
+  }
+  
+  .slide-up.active {
+    @apply translate-y-0 opacity-100;
   }
 }
