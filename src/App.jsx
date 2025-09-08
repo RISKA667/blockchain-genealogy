@@ -83,9 +83,64 @@ const AppLayout = ({ user, connectionStatus }) => (
       </Suspense>
     </main>
 
-    <Suspense fallback={<div className="h-32 bg-white border-t"></div>}>
-      <Footer connectionStatus={connectionStatus} />
-    </Suspense>
+    <footer className="bg-white border-t border-gray-200 mt-auto">
+      <div className="container py-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="text-2xl">🧬</div>
+              <div>
+                <div className="font-bold text-lg gradient-text">
+                  Blockchain Genealogy
+                </div>
+                <div className="text-xs text-gray-500">Alternative moderne à Geneanet</div>
+              </div>
+            </div>
+            <p className="text-gray-600 text-sm max-w-md">
+              Créez votre arbre généalogique avec certification blockchain. 
+              Sources vérifiées, interface moderne, 100% gratuit.
+            </p>
+          </div>
+          
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-3">Navigation</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="/" className="text-gray-600 hover:text-blockchain-600">🏠 Accueil</a></li>
+              <li><a href="/search" className="text-gray-600 hover:text-blockchain-600">🔍 Rechercher</a></li>
+              <li><a href="/tree" className="text-gray-600 hover:text-blockchain-600">🌳 Mon arbre</a></li>
+              <li><a href="/profile" className="text-gray-600 hover:text-blockchain-600">👤 Profil</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-3">Vs Geneanet</h4>
+            <ul className="space-y-2 text-sm">
+              <li className="text-green-600">✅ 100% gratuit</li>
+              <li className="text-green-600">✅ Blockchain certifié</li>
+              <li className="text-green-600">✅ Interface moderne</li>
+              <li className="text-green-600">✅ Sans limite</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="border-t border-gray-200 pt-6 mt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-xs text-gray-500">
+            © 2024 Blockchain Genealogy. Révolutionnons la généalogie ensemble.
+          </p>
+          <div className="flex items-center gap-4 mt-4 md:mt-0">
+            <span className="text-xs text-gray-500">Status: {connectionStatus}</span>
+            <a 
+              href="https://geneanet.org" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs text-gray-400 hover:text-gray-600"
+            >
+              🔗 Comparer avec Geneanet
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 )
 
